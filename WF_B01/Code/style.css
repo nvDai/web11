@@ -1,0 +1,35 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+h1 {
+	color: #E02222;
+	font-weight: bold;
+	text-align: center;
+	display: block;
+}
+
+ul {
+	font-size: 26px;
+	color: #5C4949;
+	padding: 5px;
+	font-family: 'Inconsolata', monospace;
+	background-color: #4CAF50;
+
+	margin-bottom: 20px;
+}
+
+ul>li {
+	border: 1x solid #0C0C0C;
+	text-align: center;
+	display: inline;
+	padding: 5px;
+	margin-right: 5px;
+}
+
+li:hover {
+	color: #DD2C2C;
+	font-weight: bold;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test 1</title>
+	<script type="text/javascript">
+		// function search(input, target) {
+	 //  		//return  input.indexOf(target);  // Remove this line and change to your own algorithm
+	 //  		var index = -1;
+	 //  		for (var i = 0; i < input.length; i++) {
+	 //    		if(input[i] == target) {
+	 //      			index = i;
+	 //      			return {"input": input, "target": target, "index": index};
+	 //      			break;
+	 //  			}
+		//   	}
+		//   	return -1;
+		// }
+
+		// var arr = [1, 2, 3, 4, 5, 6, 7];
+		// var target = 5;
+		// var result = search(arr, target);
+		// console.log(result);
+
+		// function sort(input) {
+		//   // return input.sort((a,b) => a-b); // Remove this line and change to your own algorithm
+		//   for (var i = 0; i < input.length - 1; i++) {
+		//   	for (var j = i + 1; j < input.length; j++) {
+		//   		if(input[j] < input[i]) {
+		//   			var temp = input[j];
+		//   			input[j] = input[i];
+		//   			input[i] = temp;
+		//   		}
+		//   	}
+		//   }
+		//   return input;
+		// }
+
+		// var arr = [10, 9 , 2, 3, 4, 5, 6, 7];
+		// var target = 5;
+		// sort(arr)
+		// console.log(arr);
+		const rangeTarget = 10;
+		var result = {};
+
+		function creatArray(length) {
+			var arr = [];
+			for (var i = 0; i < length; i++) {
+				arr[i] = Math.floor((Math.random() * rangeTarget) + 1);
+			}
+			return arr;
+		}
+		function search(input, target) {
+		  //return  input.indexOf(target);  // Remove this line and change to your own algorithm
+			var index = -1;
+		  	for (var i = 0; i < input.length; i++) {
+		    	if(input[i] == target) {
+		        	index = i;
+		        	if (input.length >= 5) {
+		        		if (index === 0) {
+		        			return {"input": input, "target": target, "index": index, "fisrtIndex": true, "middleIndex": false, "lastIndex": false};
+		        		} else if (index == input.length - 1) {
+		        			return {"input": input, "target": target, "index": index, "fisrtIndex": false, "middleIndex": false, "lastIndex": true};
+		        		} else {
+		        			return {"input": input, "target": target, "index": index, "fisrtIndex": false, "middleIndex": true, "lastIndex": false};
+		        		}
+		        	}
+		        	
+		        	break;
+		    	}
+		  	}
+		  return {"input": input, "target": target, "index": index};
+		}
+
+		function generate(testLengthArray){
+		 	for (var i = 0; i < testLengthArray.length; i++) {
+		 		var itemObj = {};
+		 		var lengthItem = testLengthArray[i];
+
+		 		var itemArr = creatArray(lengthItem);
+		 		var itemTarget = Math.floor((Math.random() * rangeTarget) + 1);
+
+		 		itemArr.sort(function(a, b) { return (a - b)});	//Sắp xếp mảng số nguyên tăng dần
+
+		 		itemObj = search(itemArr, itemTarget);
+		 		result[i] = itemObj; 
+		 	}
+		 	return result;
+		}
+
+		var arr = [2, 4, 6, 8, 3, 12];
+		generate(arr);
+		console.log(arr);
+		console.log(result);
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS</title>
+	<script type="text/javascript">
+		// var variable;
+		// console.log(variable);
+		// variable = null;
+		// console.log(variable);
+		// console.log(typeof(variable));
+
+		// var func = function() {
+		// 	console.log("Helllo world");
+
+		// }
+		// func();
+		// var func1 = func;	//Gán 2 func với nhau như 2 biến bình thường
+		// func1();
+
+		// /*=======================CALL BACK==============================*/
+		// //Function in ES6
+		// //Callback sử dụng 1 hàm như là 1 biến để truyền vào 1 hàm khác
+		// var print = (callback) => {
+		// 	console.log("Hello Dai!");
+		// 	setTimeout(()=>{
+		// 		console.log("Count done!");
+		// 		callback();
+		// 	}, 1000);
+		// }
+
+		// var callbackFunction = () => {
+		// 	console.log("End");
+		// }
+		// console.log("Start");
+		// print(callbackFunction);
+		// /*=====================FUNCTION SCOPE==========================*/
+		// var funct = () => {
+		// 	b = 5;	//b là biến toàn cục, đưa vào biến window
+		// 	console.log(b);
+		// }
+
+		// funct();
+		// console.log(b);
+		// console.log(window.b); //bien window
+
+		// var countDown = (time) => {
+		// 	//let dùng cho block scope tính cả setTimeout, nếu dùng var thì vòng lặp chạy xong, sau đó setTimeout mới chạy, khi đó i = 1
+		// 		for (let i = time; i >= 0; i--) { 
+		// 		setTimeout(()=>{
+		// 			console.log(i);
+		// 		}, (time - i)*1000);
+		// 	}
+		// }
+		
+		// countDown(5);
+
+		var a = 6;
+		console.log(a);
+
+		if (1 + 1 == 2) {
+			let a = 9;
+			console.log(a);
+		}
+
+		console.log(a);
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>

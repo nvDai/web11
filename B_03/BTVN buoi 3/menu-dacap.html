@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Horizontal Menu</title>
+	<style type="text/css">
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+		.menu {
+			background-color: #D5B0AC;
+			color: #402E2A;
+			text-align: center;
+		}
+
+		.menu > span {
+			display: inline-block;
+			line-height: 30px;
+			width: 100px;
+			height: 30px;
+			position: relative;
+		}
+
+		.menu :hover {
+			color: #FFFFFF;
+			background-color: #9CD08F;
+			cursor: pointer;			
+		}
+
+		.menu .sub-menu {
+			display: none;
+			position: absolute;
+			background-color: #D5B0AC;
+			color: #402E2A;
+			
+		}
+
+		.sub-menu span {
+			border: 1px solid #ffffff;
+			position: relative;
+		}
+
+		.menu>span:hover>.sub-menu {
+			display: block;
+		}
+		
+		.sub-menu  span .sub-menu {
+			position: absolute;
+			display: none;
+			left: 100%;
+			top: 0px;
+		}
+
+		
+		
+		
+	</style>
+</head>
+<body>
+	<nav class="menu">
+		<span>Item1
+			<nav class="menu sub-menu">
+				<span>Item1
+					<nav class="menu sub-menu">
+						<span>Item1
+							<nav class="menu sub-menu">
+								<span>Item1</span>
+								<span>Item2</span>
+								<span>Item3</span>
+								<span>Item4</span>
+							</nav>
+						</span>
+						<span>Item2
+							<nav class="menu sub-menu">
+								<span>Item1</span>
+								<span>Item2</span>
+								<span>Item3</span>
+								<span>Item4</span>
+							</nav>
+						</span>
+						<span>Item3
+							<nav class="menu sub-menu">
+								<span>Item1</span>
+								<span>Item2</span>
+								<span>Item3</span>
+								<span>Item4</span>
+							</nav>
+						</span>
+						<span>Item4
+							<nav class="menu sub-menu">
+								<span>Item1</span>
+								<span>Item2</span>
+								<span>Item3</span>
+								<span>Item4</span>
+							</nav>
+						</span>
+					</nav>
+				</span>
+				<span>Item2
+					<nav class="menu sub-menu">
+						<span>Item1
+							<nav class="menu sub-menu">
+								<span>Item1</span>
+								<span>Item2</span>
+								<span>Item3</span>
+								<span>Item4</span>
+							</nav>
+						</span>
+						<span>Item2
+							<nav class="menu sub-menu">
+								<span>Item1</span>
+								<span>Item2</span>
+								<span>Item3</span>
+								<span>Item4</span>
+							</nav>
+						</span>
+						<span>Item3
+							<nav class="menu sub-menu">
+								<span>Item1</span>
+								<span>Item2</span>
+								<span>Item3</span>
+								<span>Item4</span>
+							</nav>
+						</span>
+						<span>Item4
+							<nav class="menu sub-menu">
+								<span>Item1</span>
+								<span>Item2</span>
+								<span>Item3</span>
+								<span>Item4</span>
+							</nav>
+						</span>
+					</nav>
+				</span>
+				<span>Item3
+					<nav class="menu sub-menu">
+						<span>Item1
+							<nav class="menu sub-menu">
+								<span>Item1</span>
+								<span>Item2</span>
+								<span>Item3</span>
+								<span>Item4</span>
+							</nav>
+						</span>
+						<span>Item2
+							<nav class="menu sub-menu">
+								<span>Item1</span>
+								<span>Item2</span>
+								<span>Item3</span>
+								<span>Item4</span>
+							</nav>
+						</span>
+						<span>Item3
+							<nav class="menu sub-menu">
+								<span>Item1</span>
+								<span>Item2</span>
+								<span>Item3</span>
+								<span>Item4</span>
+							</nav>
+						</span>
+						<span>Item4
+							<nav class="menu sub-menu">
+								<span>Item1</span>
+								<span>Item2</span>
+								<span>Item3</span>
+								<span>Item4</span>
+							</nav>
+						</span>
+					</nav>
+				</span>
+				<span>Item4
+					<nav class="menu sub-menu">
+						<span>Item1
+							<nav class="menu sub-menu">
+								<span>Item1</span>
+								<span>Item2</span>
+								<span>Item3</span>
+								<span>Item4</span>
+							</nav>
+						</span>
+						<span>Item2
+							<nav class="menu sub-menu">
+								<span>Item1</span>
+								<span>Item2</span>
+								<span>Item3</span>
+								<span>Item4</span>
+							</nav>
+						</span>
+						<span>Item3
+							<nav class="menu sub-menu">
+								<span>Item1</span>
+								<span>Item2</span>
+								<span>Item3</span>
+								<span>Item4</span>
+							</nav>
+						</span>
+						<span>Item4
+							<nav class="menu sub-menu">
+								<span>Item1</span>
+								<span>Item2</span>
+								<span>Item3</span>
+								<span>Item4</span>
+							</nav>
+						</span>
+					</nav>
+				</span>
+			</nav>
+		</span>
+		<span>Item2
+			<nav class="menu sub-menu">
+				<span>Item1</span>
+				<span>Item2</span>
+				<span>Item3</span>
+				<span>Item4</span>
+			</nav>
+		</span>
+		<span>Item3
+			<nav class="menu sub-menu">
+				<span>Item1</span>
+				<span>Item2</span>
+				<span>Item3</span>
+				<span>Item4</span>
+			</nav>
+		</span>
+		<span>Item4
+			<nav class="menu sub-menu">
+				<span>Item1</span>
+				<span>Item2</span>
+				<span>Item3</span>
+				<span>Item4</span>
+			</nav>
+		</span>
+	</nav>
+	
+</body>
+</html>

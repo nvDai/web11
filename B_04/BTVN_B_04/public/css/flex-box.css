@@ -1,0 +1,45 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.header {
+    background-color: #0000ff;
+}
+
+.nav {
+    background-color: #800080;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+.main {
+    background-color: #ffd700;
+    float: left;
+    text-align: center;
+    display: inline-block;
+    order: 0;
+}
+
+
+.aside {
+    background-color: #808080;
+    text-align: center;
+    display: table;
+    order: 1;
+    display: inline-block;
+}
+
+.footer {
+    background-color: #00ffff;
+    float: left;
+    text-align: center;
+    clear: both;
+}

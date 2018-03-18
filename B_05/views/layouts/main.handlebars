@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/views/layouts/main.css">
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            text-decoration: none;
+        }
+
+        .menu {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 15px;
+        }
+        
+        .menu a { 
+            text-align: center;
+            padding: 15px;
+            margin-left: 20px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        
+       .active {
+            background-color: #5F5F5F;
+        }
+
+        .menu a:visited {
+            color: #ffffff;;
+        }
+
+        .menu a:hover {
+            background-color: #5F5F5F;
+            color: #ffffff;
+        }
+    </style>
+    <title>Micheal App</title>
+</head>
+<body>
+    <nav class="menu">
+        <a href="/" onclick="active();">Quyết đê</a>
+        <a href="/ask" onclick="active()";>Hỏi nhanh</a>
+        <a href="/question" onclick="active();">Đáp gọn</a>
+    </nav>
+    {{{body}}} <!--Đánh dấu sự xuất hiện của view, body là biến chứa html, 3 cặp dấu {} là để in ra html-->
+</body>
+</html>

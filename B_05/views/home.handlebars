@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .main {
+            text-align: center;
+            margin: 30px auto;
+            font-family: sans-serif;
+        }
+
+        .main h2 {
+            font-size: 40px;
+        }
+
+        .main p {
+            margin: 30px auto;
+            font-size: 30px;
+        }
+        .main a{
+            
+            text-decoration: none;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
+
+        .btn-yes {
+            margin-top: 50px;
+            margin-right: 20px;
+            margin-left: 20px;
+            width: 120px;
+            height: 40px;
+            border-radius: 5px;
+            color: #ffffff;
+            font-weight: bold;
+            background: #D94F53;
+        
+        }
+        .btn-no{
+            margin-top: 50px;
+            margin-right: 20px;
+            margin-left: 20px;
+            width: 120px;
+            height: 40px;
+            border-radius: 5px;
+            color: #ffffff;
+            font-weight: bold;
+            background: #337AB5;
+        }
+
+        .main div {
+            margin-top: 30px;
+        }
+
+        .btn-vote_result {
+            color: #000000;
+            margin-right: 10px;
+            padding: 5px;
+            background-color: #4CAF50;
+        }
+        .btn-another_question {
+            color: #000000;
+            padding: 5px;
+            background-color: #4CAF50;
+        }
+
+        
+
+        .main a:visited {
+            color: #ffffff;;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h2>Question</h2>
+        <p>{{question}}</p><!--2 cặp dấu {} là để hiển thị biến-->
+        <button class="btn-yes"><a href="/vote/{{id}}/yes">Đúng/Có/Phải</a></button>
+        <button class="btn-no"><a href="/vote/{{id}}/no">Sai/Không/Trái</a></button>
+        <div>
+            <button class="btn-vote_result"><a href="/vote/{{id}}/yes">Kết quả vote</a></button>
+            <button class="btn-another_question"><a href="/">Câu hỏi khác</a></button>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+
+

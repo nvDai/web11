@@ -1,0 +1,97 @@
+.navbar {
+	background-color: #ffffff;
+	padding: 15px 0 10px;
+}
+.col-md-3 {
+	margin-top: 10px;
+}
+.navbar-form {
+	position: relative;
+}
+
+.navbar-form .glyphicon-search {
+	position: absolute;
+	right: 22px;
+	top: 50%;
+	transform: translate(0, -50%);
+	color: #cecece;
+}
+
+.form-control {
+	border-radius: 0;
+}
+
+.text-center {
+	text-align: center;
+}
+a {
+	color: #337ab7;
+	text-decoration: none;
+}
+.site_logo {
+	font-size: 22px;
+	font-weight: 100;
+	color: #00a0c6;
+	line-height: 34px;
+}
+
+.col-sm-6 {
+	width: 50%;
+	float: left;
+	position: relative;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+
+.bg-gray {
+	background-color: #dddbdb;
+}
+.box {
+	width: 250px;
+	margin: 10px auto;
+	padding-bottom: 10px;
+	position: relative;
+}
+.box img {
+	display: inline;
+	width: 100%;
+}
+
+.avatar {
+	display: inline;
+}
+
+.avatar img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	float: left;
+}
+
+.box-info {
+	background-color: #ffffff;
+	padding: 5px;
+}
+.box-info h4 {
+	display: inline;
+	position: relative;
+}
+.box-tilte {
+	display: inline;
+	position: relative;
+	top: 30px;
+	left: 5px;
+}
+.box-tilte p {
+	margin-top: 5px;
+    margin-bottom: 40px;
+}
+.parag {
+	margin-top: 10px;
+}
+
+

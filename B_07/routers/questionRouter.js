@@ -4,7 +4,7 @@ const questionController = require("../controllers/questionController");
 
 router.get('/:id', (req,res) =>{
     var id = req.params.id;
-    questionController.findID(id, (collection) => {
+    questionController.getQuestionByID(id, (collection) => {
             // let questionList = [ ...fileController.readFileSync('./data.json') ]; ///... để nối mảng
             let question = collection;
             let total = question.yes + question.no;

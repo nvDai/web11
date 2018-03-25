@@ -3,7 +3,7 @@ const router = express.Router();
 const questionController = require("../controllers/questionController");
 
 router.get('/', (req, res)=>{
-    questionController.findAll((collections => {
+    questionController.getQuestion((collections => {
         let id = Math.floor(Math.random()*collections.length);
         if(collections.length === 0) {
             res.render('home1', {

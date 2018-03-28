@@ -1,0 +1,28 @@
+
+<div class="container">
+    <form method="POST" action="/ask"><!--method: get lấy dữ liệu, post: gửi data, action: đường link, có thể xoá method và action khi sử dụng ajax-->
+        <h1>Hãy hỏi cộng đồng một câu hỏi đúng/sai hoặc có/không</h1>
+        <textarea name="question" id="questionInput" name="question" class="form-control" cols="100" rows="8"></textarea>
+        <p id="character" class="text-muted">Còn 200/200 ký tự</p>
+        <button type="submit" class="btn btn-primary">Gửi</button>
+    </form>
+</div>
+
+<script>
+    $(document).ready(() => {
+        $("form").submit(() => {
+            $.ajax({
+                url: '/testajax',
+                method: 'POST',
+                data {
+                    tien: 50;
+                }
+                success: function(res){
+                    console.log(res);
+                }
+            });
+        });
+    });
+</script>
+
+

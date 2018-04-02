@@ -1,0 +1,6 @@
+Các bước để làm 1 project node.js
+B1: Cài npm: npm init, sẽ tạo ra 1 file package.json
+	+ File package.json chứa thông tin project bao gồm các thư viện mà ta đã cài.
+    + Khi chạy nmp install path thì path sẽ được install và lưu vào package.json và được chứa trong node_modules. Nếu thêm --save thì các thư viện sẽ được lưu vào dependencies(và sẽ không bị mất khi cài thư viện khác, dùng khi release app), nếu muốn cài thư viện để dev thì sử dụng --dev
+    + Cài express: npm i express --save
+B2: Gọi thư viện sử sụng require('')

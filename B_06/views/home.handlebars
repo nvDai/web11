@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">{{question}}</h1><!--2 cặp dấu {} là để hiển thị biến-->
+        <div class="row text-center" id="btn_answer">
+            <div class="col-md-6">
+                <a href="/vote/{{id}}/no">
+                    <button type="submit" class="btn btn-danger btn-lg btn-yesno" name="btn_yesno" value="no">
+                        <span class="glyphicon glyphicon-thumbs-down"></span>
+                        Sai / Không / Trái
+                    </button>
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a href="/vote/{{id}}/yes">
+                    <button type="submit" class="btn btn-primary btn-lg btn-yesno" name="btn_yesno" value="yes">
+                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                        Đúng / Có / Phải
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div class="row text-center" id="btn_chuyen">
+            <a href="/question/info/{{id}}"><button type="submit" class="btn btn-default" name="btn_yesno" value="ketquavote">Kết quả vote</button></a>
+            <a href="/"><button type="submit" class="btn btn-default" name="btn_yesno" value="cauhoikhac">Câu hỏi khác</button></a>
+        </div>
+    </div>
+    
+    
+</body>
+</html>
+
+
+

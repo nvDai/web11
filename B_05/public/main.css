@@ -1,0 +1,16 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+a {
+    text-decoration: none;
+    text-align: center;
+    padding: 5px;
+}
+
+.menu {
+    background-color: brown;
+    text-align: center;
+    color: black;
+}

@@ -1,0 +1,73 @@
+
+<div class="container">
+    <h1 class="text-center" id="questionContent">{{question}}</h1><!--2 cặp dấu {} là để hiển thị biến-->
+    <div class="row text-center" id="btn_answer">
+        <div class="col-md-6">
+            {{!-- <a href="/vote/{{id}}/no"> --}}
+                <button id="btnNo" type="submit" class="btn btn-danger btn-lg btn-yesno" name="btn_yesno" value="no">
+                    <span class="glyphicon glyphicon-thumbs-down"></span>
+                    Sai / Không / Trái
+                </button>
+            {{!-- </a> --}}
+        </div>
+        <div class="col-md-6">
+            {{!-- <a href="/vote/{{id}}/yes"> --}}
+                <button id="btnYes" type="submit" class="btn btn-primary btn-lg btn-yesno" name="btn_yesno" value="yes">
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                    Đúng / Có / Phải
+                </button>
+            {{!-- </a> --}}
+        </div>
+    </div>
+    <div class="row text-center" id="btn_chuyen">
+        {{!-- <a href="/question/{{id}}"> --}}
+            <button id="resultVote" type="submit" class="btn btn-default" name="btn_yesno" value="ketquavote">Kết quả vote</button>
+        {{!-- </a> --}}
+        {{!-- <a href="/"> --}}
+            <button id="btnQueston" type="submit" class="btn btn-default" name="btn_yesno" value="cauhoikhac">Câu hỏi khác</button>
+        {{!-- </a> --}}
+    </div>
+</div>
+<script>
+    let content = null;
+
+    $('#btnNo').click(() => {
+        if (content == null) {
+            location.href = "/vote/{{id}}/no";
+        }
+        else {
+            location.href = '/vote/' + content._id + '/no';
+        }
+    })
+    $('#btnYes').click(() => {
+        if (content == null) {
+            location.href = "/vote/{{id}}/yes";
+        }
+        else {
+            location.href = '/vote/' + content._id + '/yes';
+        }
+    })
+
+    $("#resultVote").click(() => {
+        if(content == null){
+                location.href = "/question/{{id}}";
+            }
+        else{
+            location.href = '/question/' + content._id;
+        }
+    });
+
+    function Ajax() {
+        $.ajax({
+            url: '/',
+            method: 'POST',
+            success: (res) => {
+                $("#questionContent").html(res.content.questionContent);
+                content = res.content;
+            }
+        })
+    }
+</script>
+
+
+

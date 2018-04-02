@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row text-center" id="text_question">
+        <h1 id='question'>{{question}}</h1>
+    </div>
+    <div class="row text-center" id="text_vote">
+        <h3>{{totalVote}} vote</h3>
+    </div>
+    <div class="progress" id="rateAnswer" idQuestion="{{id}}" >
+        <div class="progress-bar progress-bar-success " role="progressbar" style="width: {{noRate}}%;">
+            <div class="question_result_no">
+                {{noRate}}%
+                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+            </div>
+        </div>
+        <div class="progress-bar progress-bar-danger " role="progressbar" style="width: {{yesRate}}%;">
+            <div class="question_result_yes">
+                {{yesRate}}%
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+            </div>
+            
+        </div>
+    </div>
+    <div class="row text-center">
+        {{!-- <a href="/"> --}}
+            <button id="btnQueston" type="submit" class="btn btn-success btn-lg btn-xemcauhoikhac">Xem câu hỏi khác</button>
+        {{!-- </a> --}}
+    </div>
+</div>
+
+
+
+

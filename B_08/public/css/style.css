@@ -1,0 +1,52 @@
+* {
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+}
+.navbar {
+    border-radius: 0;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+.text-center {
+    margin-bottom: 50px;
+}
+.btn-yesno a:visited {
+    color: #ffffff;
+}
+
+.btn-yesno a:hover {
+    text-decoration: none;
+}
+
+.btn-yesno a:link {
+    color: #ffffff;
+}
+.btn-yesno a:actived {
+    color: #ffffff;
+}
+
+.question_result_no {
+    background-color: #D9534F;
+    padding: 5px 0;
+}
+.question_result_yes {
+    background-color: #337AB7;
+    padding: 5px 0;
+}
+
+.btn-xemcauhoikhac a:visited {
+    color: #ffffff;;
+}
+
+.container-fluid {
+    font-size: 16px;
+}
+
+.progress{
+    margin: 30px 10px;
+    height: 30px;
+}
+

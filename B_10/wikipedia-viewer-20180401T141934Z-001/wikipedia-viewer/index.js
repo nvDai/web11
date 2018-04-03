@@ -15,7 +15,8 @@ const listenToFormSubmitEvent = () => {
          *  - Đưa các DOM trong array trên vào trong <div class="article-list"></div>
          */
         
-        $("#btn-search").on('click', async ()=> {
+        $("#article-search-form__input").keyup($.throttle(1000, true , async ()=>{
+        // $("#article-search-form__input").keyup(async ()=> {
             //Remove previous loader displayed in previous seacrhing    
             $(".loader").remove();
             //Add a new loader
@@ -23,7 +24,7 @@ const listenToFormSubmitEvent = () => {
 
             //Value of the input form
             const keywordSearching = $("#article-search-form__input").val();
-
+            
             //get data from https://en.wikipedia.org/w/api.php
             const questionQuery = await $.ajax({
                 url: 'https://en.wikipedia.org/w/api.php',
@@ -35,27 +36,32 @@ const listenToFormSubmitEvent = () => {
                     srprop: "snippet",
                     origin: "*",
                     srsearch: encodeURI(keywordSearching)
-                },
-                success: (res) => {
-                    let questionQuery = res;
-                    return questionQuery;  
                 }
             });
+
+            //remove all result when input has no keywordSearching
+            if(keywordSearching.length == 0){
+                console.log("No question");
+                $(".article-list").html("");
+            }
+
             //remove loader before adding elements
             $(".loader").remove();
             //remove elements added in previous seacrhing 
-            for (let i = 0; i < questionQuery.query.search.length; i++) {
-                $(".article-view").remove();
-            }
-            //add new elements in element has 'article-list' class name
-            for (let i = 0; i < questionQuery.query.search.length; i++) {
-                // console.log("Hello");
-                // console.log(res.query.search[i]);
-                $(".article-list").append('<a href="https://en.wikipedia.org/?curid=' + questionQuery.query.search[i].pageid+ ' target="_blank" class="article-view"><h3 className="article-view__title">'
-                 + questionQuery.query.search[i].title + '</h3><p className="article-view__snippet">' + questionQuery.query.search[i].snippet + '</p></a>');
-            }
-            
-         })
+            $(".article-list").html("");
 
+            //add new elements in element has 'article-list' class name
+            let resultSearchingList = questionQuery.query.search;
+            if(resultSearchingList.length == 0) {
+                $(".article-list").prepend("<h2>Không tìm thấy kết quả cho từ khoá: '" + keywordSearching + "'</h2>");
+            } else {
+                $.each(resultSearchingList, (key, value)=> {
+                    $(".article-list").append('<a href="https://en.wikipedia.org/?curid=' + value.pageid+ ' target="_blank" class="article-view"><h3 class="article-view__title">'
+                     + value.title + '</h3><p class="article-view__snippet">' + value.snippet + '</p></a>');
+                }); 
+                
+            }           
+         }));
     })
 }
+

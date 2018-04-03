@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://benalman.com/code/projects/jquery-throttle-debounce/jquery.ba-throttle-debounce.js"></script>
+<script>
+  $(document).ready(function(){
+  		/*let beginTime;
+    	let endTime;
+    	let timePressKey;
+        let totalTime = 0;
+      	$("#article-search-form__input").keydown(function(){
+          var d = new Date();
+          beginTime = d.getTime();
+          $("#beginTime").html(beginTime);
+      	});*/
+        $("#article-search-form__input").keyup($.throttle(250, true , ()=>{
+          console.log("Hello");
+          $("#beginTime").html($("#article-search-form__input").val().length);
+        }));
+		
+  });
+</script>
+</head>
+<body>
+
+<p>Click the button to display the milliseconds of the time right now.</p>
+<input type="text" value="" class="article-search-form__input" id="article-search-form__input">
+<button class="btn btn-primary btn-block" id="btn-search" >Search</button>
+<div>Begin time: <p id="beginTime"></p></div>
+<div>Endtime: <p id="endTime"></p></div>
+<div>Execute time per keyup: <p id="keyupTime"></p></div>
+<div>Total time pressing key: <p id="totalTime"></p></div>
+
+
+
+</body>
+</html>

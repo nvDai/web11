@@ -15,7 +15,8 @@ const listenToFormSubmitEvent = async () => {
     
      var questionQuery;
      
-    await $("#article-search-form__input").on("input", $.throttle(1000, false , async ()=>{
+    // await $("#article-search-form__input").on("input", $.throttle(1000, false , async ()=>{
+        await $("#article-search-form__input").on("input", throttle(async ()=>{
         //Remove previous loader displayed in previous seacrhing    
         removeLoader();
         //Add a new loader
@@ -41,7 +42,7 @@ const listenToFormSubmitEvent = async () => {
         //add new elements in element has 'article-list' class name
         let resultSearchingList = questionQuery.query.search;
         processData(resultSearchingList);           
-     }));
+     }), 1000);
 
 
     var trigo = false;
@@ -98,13 +99,13 @@ const debounce = (func, timeDelay)=> {
 }
 
 const throttle = (func, timeDelay)=> {
-        let timer;
+        
         let check;
         return ()=> {
             if(!check) {
                 check = true;
-                timer = setTimeout(()=> {
-                    func();
+                func();
+                setTimeout(()=> {
                     check = false;
                 }, timeDelay);
             }

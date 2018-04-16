@@ -85,7 +85,7 @@ Router.put('/:id/email', (req, res) => {
 });
 
 
-Router.put('/:id', (req, res) => {
+Router.delete('/:id', (req, res) => {
     userController
     .deleteUser(req.params.id)
     .then(users => res.send(users))

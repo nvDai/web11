@@ -1,4 +1,4 @@
-/*TODO LIST
+﻿/*TODO LIST
 - Hoàn thành router cho update/delete image
 - Hoàn thành controller/router cho like/unlike/delete comment
 
@@ -50,7 +50,7 @@ Router.put('/:id', (req, res) => {
     })
 })
 
-Router.put('/:id', (req, res) => {
+Router.delete('/:id', (req, res) => {
     imageController
     .deleteImage(req.params.id)
     .then(id => res.send(id))
@@ -70,9 +70,7 @@ Router.post('/:imageId/comments', (req, res) => {
     })
 });
 
-Router.put('/:imageId/comments/:commentId', (req, res) => {
-    console.log(req.params.commentId);
-    // console.log(res.body.(req.params.commentId));
+Router.delete('/:imageId/comments/:commentId', (req, res) => {
     imageController
     .deleteComment(req.params.imageId, req.params.commentId)
     .then(id => res.send(id))

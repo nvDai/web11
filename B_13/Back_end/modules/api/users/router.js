@@ -16,83 +16,83 @@ const userController = require('./controller');
 
 Router.post('/', (req, res) => {
     userController
-    .creatUser(req.body)
-    .then(user => res.send(user))
-    .catch(err => {
-        console.log(err);
-        res.status(500).send(err);
-    })
+        .creatUser(req.body)
+        .then(user => res.send(user))
+        .catch(err => {
+            console.log(err);
+            res.status(500).send(err);
+        })
 });
 Router.get('/:id', (req, res) => {
     userController
-    .getUser(req.params.id)
-    .then(user => res.send(user))
-    .catch(err => {
-        console.log(err);
-        res.status(500).send(err); //dải 500 là lỗi server
-    })
+        .getUser(req.params.id)
+        .then(user => res.send(user))
+        .catch(err => {
+            console.log(err);
+            res.status(500).send(err); //dải 500 là lỗi server
+        })
 });
 
 Router.get('/', (req, res) => {
     userController
-    .getAllUsers(req.query.page || 1)
-    .then(users => res.send(users))
-    .catch(err => {
-        console.log(err);
-        res.status(500).send(err); //dải 500 là lỗi server
-    })
+        .getAllUsers(req.query.page || 1)
+        .then(users => res.send(users))
+        .catch(err => {
+            console.log(err);
+            res.status(500).send(err); //dải 500 là lỗi server
+        })
 });
 
 Router.put('/:id/username', (req, res) => {
     userController
-    .updateUserName(req.params.id, req.body)
-    .then(user => res.send(user))
-    .catch(err => {
-        console.log(err);
-        res.status(500).send(err); //dải 500 là lỗi server
-    })
+        .updateUserName(req.params.id, req.body)
+        .then(user => res.send(user))
+        .catch(err => {
+            console.log(err);
+            res.status(500).send(err); //dải 500 là lỗi server
+        })
 });
 
 
 Router.put('/:id/password', (req, res) => {
     userController
-    .updatePassword(req.params.id, req.body)
-    .then(user => res.send(user))
-    .catch(err => {
-        console.log(err);
-        res.status(500).send(err); //dải 500 là lỗi server
-    })
+        .updatePassword(req.params.id, req.body)
+        .then(user => res.send(user))
+        .catch(err => {
+            console.log(err);
+            res.status(500).send(err); //dải 500 là lỗi server
+        })
 });
 
 Router.put('/:id/avatar', (req, res) => {
     userController
-    .updateAvatar(req.params.id, req.body)
-    .then(user => res.send(user))
-    .catch(err => {
-        console.log(err);
-        res.status(500).send(err); //dải 500 là lỗi server
-    })
+        .updateAvatar(req.params.id, req.body)
+        .then(user => res.send(user))
+        .catch(err => {
+            console.log(err);
+            res.status(500).send(err); //dải 500 là lỗi server
+        })
 });
 
 Router.put('/:id/email', (req, res) => {
     userController
-    .updateEmail(req.params.id, req.body)
-    .then(user => res.send(user))
-    .catch(err => {
-        console.log(err);
-        res.status(500).send(err); //dải 500 là lỗi server
-    })
+        .updateEmail(req.params.id, req.body)
+        .then(user => res.send(user))
+        .catch(err => {
+            console.log(err);
+            res.status(500).send(err); //dải 500 là lỗi server
+        })
 });
 
 
 Router.delete('/:id', (req, res) => {
     userController
-    .deleteUser(req.params.id)
-    .then(users => res.send(users))
-    .catch(err => {
-        console.log(err);
-        res.status(500).send(err); //dải 500 là lỗi server
-    })
+        .deleteUser(req.params.id)
+        .then(users => res.send(users))
+        .catch(err => {
+            console.log(err);
+            res.status(500).send(err); //dải 500 là lỗi server
+        })
 })
 
 module.exports = Router;

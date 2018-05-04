@@ -18,12 +18,10 @@ class App extends Component {
     this.setState({ initializing: false });
   }
 
-  _addRound = () => {
-    this.setState({ initializing: true });
-  }
+ 
 
   render() {
-    const renderedComponent = this.state.initializing ? <CreateNewGame startGame={this._startGame} /> : <ScoreTable playerNames={this.playerNames} addRound={this._addRound}/>;
+    const renderedComponent = this.state.initializing ? <CreateNewGame startGame={this._startGame} /> : <ScoreTable playerNames={this.playerNames} />;
     return (
       <div className="App container">
         <NavBar />

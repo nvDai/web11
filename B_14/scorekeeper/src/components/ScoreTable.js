@@ -10,10 +10,10 @@ class ScoreTable extends Component {
 
     _onClick = () => {
         let number = this.state.roundNumber + 1;
-        const scores = this.state.playerScore.map();
+        const scores = this.state.playerScore;
         scores.push([]);
+        alert("hello");
 
-        this.props.addRound();
         this.setstate({ roundNumber: number });
         this.setstate({ playerScore: scores });
 
@@ -47,7 +47,7 @@ class ScoreTable extends Component {
         ));
 
         return (
-            <form>
+            <div>
                 <table id="table">
                     <tr>
                         <td></td>
@@ -61,8 +61,7 @@ class ScoreTable extends Component {
 
                 </table>
                 <button className="button_glow btn-add-round" onClick={this._onClick} >ADD ROUND</button>
-            </form>
-
+            </div>
         );
     }
 }

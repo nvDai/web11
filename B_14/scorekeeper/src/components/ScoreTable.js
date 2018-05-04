@@ -3,43 +3,61 @@ import RoundScore from './RoundScore';
 
 class ScoreTable extends Component {
     state = {
-        playerScore: [[], []],
-        sumOfPlayerScore: [1, 4, 6, 7],
-        roundNumber: 2
+        playerScore: [[]],
+        sumOfPlayerScore: [0, 0, 0, 0],
+        roundNumber: 1
     }
 
-    _onClick = () => {
-        let number = this.state.roundNumber + 1;
-        const scores = this.state.playerScore;
-        scores.push([]);
-        alert("hello");
-
-        this.setstate({ roundNumber: number });
-        this.setstate({ playerScore: scores });
-
-        console.log(this.state.roundNumber);
-        console.log(this.state.playerScore);
+    _onAddRound = ()=>{
+        let rounds = this.state.playerScore;
+        let number = this.state.roundNumber;
+        number += 1;
+        rounds.push([]);
+        this.setState({playerScore: rounds})
+        this.setState({roundNumber: number})
     };
 
-    _addingRound = (roundNumber, scores) => {
+    _onChangeScore = (rowIndex, colIndex, score) => {
+        let scores = this.state.playerScore;
+        if (!isNaN(score)) {
+            scores[rowIndex][colIndex] = score;
+        } else {
+            scores[rowIndex][colIndex] = 0;
+        }
+        
+        this.setState({ playerScore: scores });
+    }
+
+    _onAddRound = (roundNumber, scores) => {
         let rounds = [];
         for (let i = 0; i < roundNumber; i++) {
             rounds.push(
                 <RoundScore
                     round={i + 1}
-                    player1Score={scores[i][0]}
-                    player2Score={scores[i][1]}
-                    player3Score={scores[i][2]}
-                    player4Score={scores[i][3]}
+                    playerScore={[scores[i][0], scores[i][1], scores[i][2], scores[i][3]]}
+                    onChangeScore={this._onChangeScore}
                 />
             )
         }
         return rounds;
     }
 
+    calculateSumScore = ((playerScores, numberPlayer) => {
+        let sumOfPlayerScore = this.state.sumOfPlayerScore;
+
+        for (let i = 0; i < numberPlayer; i++) {
+            for (let j = 0; j < this.state.roundNumber; j++) {
+                sumOfPlayerScore[i] += this.state.playerScores[j][i];
+            }
+            console.log(sumOfPlayerScore[i]);
+        }
+        
+        this.setState({ sumOfPlayerScore: sumOfPlayerScore });
+    })
+
     render() {
         const playerName = this.props.playerNames.map((name, index) => (
-            <td>{name}</td>
+            <td className="player-name">{name}</td>
         ));
 
         const totalPlayerScore = this.state.sumOfPlayerScore.map((score) => (
@@ -57,10 +75,10 @@ class ScoreTable extends Component {
                         <th>Sum of Score(<span>13</span>)</th>
                         {totalPlayerScore}
                     </tr>
-                    {this._addingRound(this.state.roundNumber, this.state.playerScore)}
+                    {this._onAddRound(this.state.roundNumber, this.state.playerScore)}
 
                 </table>
-                <button className="button_glow btn-add-round" onClick={this._onClick} >ADD ROUND</button>
+                <button className="button_glow btn-add-round" onClick={this._onAddRound} >ADD ROUND</button>
             </div>
         );
     }

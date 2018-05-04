@@ -84,3 +84,7 @@ tr:nth-child(odd) {
 .btn-add-round {
    margin-top: 30px; padding: 7px 30px;
 }
+
+.player-name {
+	font-weight: bold;
+}

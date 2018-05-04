@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class RoundScore extends Component {
     rowIndex = this.props.round - 1;
     render() {
-        const scoreInput = this.props.playerScore.map((score, index) => ( // phải đúng thusws tự (score, index)
+        const scoreInput = this.props.playerScore.map((score, index) => ( // phải đúng thứ tự (score, index)
             <td>
                 <input
                     type="text" placeholder="0"

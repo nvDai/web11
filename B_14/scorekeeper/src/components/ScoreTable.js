@@ -4,7 +4,7 @@ import RoundScore from './RoundScore';
 class ScoreTable extends Component {
     state = {
         playerScore: [[]],
-        sumOfPlayerScore: [0, 0, 0, 0],
+        sumOfPlayerScore: [1, 4, 6, 7],
         roundNumber: 1
     }
 
@@ -24,11 +24,11 @@ class ScoreTable extends Component {
         } else {
             scores[rowIndex][colIndex] = 0;
         }
-        
+        console.log(scores[rowIndex][colIndex] )
         this.setState({ playerScore: scores });
     }
 
-    _onAddRound = (roundNumber, scores) => {
+    _addingRound = (roundNumber, scores) => {
         let rounds = [];
         for (let i = 0; i < roundNumber; i++) {
             rounds.push(
@@ -42,20 +42,23 @@ class ScoreTable extends Component {
         return rounds;
     }
 
-    calculateSumScore = ((playerScores, numberPlayer) => {
+    calculateSumScore = (playerScores, numberPlayer) => {
         let sumOfPlayerScore = this.state.sumOfPlayerScore;
 
         for (let i = 0; i < numberPlayer; i++) {
             for (let j = 0; j < this.state.roundNumber; j++) {
-                sumOfPlayerScore[i] += this.state.playerScores[j][i];
+                sumOfPlayerScore[i] += playerScores[j][i];
             }
             console.log(sumOfPlayerScore[i]);
         }
         
         this.setState({ sumOfPlayerScore: sumOfPlayerScore });
-    })
+    };
+    
+    
 
     render() {
+        this.calculateSumScore();
         const playerName = this.props.playerNames.map((name, index) => (
             <td className="player-name">{name}</td>
         ));
@@ -75,7 +78,7 @@ class ScoreTable extends Component {
                         <th>Sum of Score(<span>13</span>)</th>
                         {totalPlayerScore}
                     </tr>
-                    {this._onAddRound(this.state.roundNumber, this.state.playerScore)}
+                    {this._addingRound(this.state.roundNumber, this.state.playerScore)}
 
                 </table>
                 <button className="button_glow btn-add-round" onClick={this._onAddRound} >ADD ROUND</button>

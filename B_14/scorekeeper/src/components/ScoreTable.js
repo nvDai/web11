@@ -4,7 +4,8 @@ import RoundScore from './RoundScore';
 class ScoreTable extends Component {
     state = {
         playerScore: [[]],
-        sumOfPlayerScore: [1, 4, 6, 7],
+        sumOfPlayerScore: [0, 0, 0, 0],
+        sumOfScore: 0,
         roundNumber: 1
     }
 
@@ -19,12 +20,30 @@ class ScoreTable extends Component {
 
     _onChangeScore = (rowIndex, colIndex, score) => {
         let scores = this.state.playerScore;
+        let sumOfScore = 0;
+        let sumOfPlayerScore = [0, 0, 0, 0];
+        let NUMBER_LOOP = this.state.roundNumber;
+
         if (!isNaN(score)) {
             scores[rowIndex][colIndex] = score;
         } else {
             scores[rowIndex][colIndex] = 0;
         }
-        console.log(scores[rowIndex][colIndex] )
+        
+        for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < NUMBER_LOOP; j++) {
+                if (isNaN(parseInt(scores[j][i], 10))) {
+                    sumOfPlayerScore[i] += 0;
+                } else {
+                    sumOfPlayerScore[i] += parseInt(scores[j][i], 10);
+                }
+                
+            }
+            sumOfScore += sumOfPlayerScore[i];
+        }
+        
+        this.setState({ sumOfPlayerScore: sumOfPlayerScore });
+        this.setState({ sumOfScore: sumOfScore });
         this.setState({ playerScore: scores });
     }
 
@@ -40,25 +59,9 @@ class ScoreTable extends Component {
             )
         }
         return rounds;
-    }
-
-    calculateSumScore = (playerScores, numberPlayer) => {
-        let sumOfPlayerScore = this.state.sumOfPlayerScore;
-
-        for (let i = 0; i < numberPlayer; i++) {
-            for (let j = 0; j < this.state.roundNumber; j++) {
-                sumOfPlayerScore[i] += playerScores[j][i];
-            }
-            console.log(sumOfPlayerScore[i]);
-        }
-        
-        this.setState({ sumOfPlayerScore: sumOfPlayerScore });
-    };
-    
-    
+    }   
 
     render() {
-        this.calculateSumScore();
         const playerName = this.props.playerNames.map((name, index) => (
             <td className="player-name">{name}</td>
         ));
@@ -75,7 +78,7 @@ class ScoreTable extends Component {
                         {playerName}
                     </tr>
                     <tr className="sum-of-score">
-                        <th>Sum of Score(<span>13</span>)</th>
+                        <th>Sum of Score(<span>{this.state.sumOfScore}</span>)</th>
                         {totalPlayerScore}
                     </tr>
                     {this._addingRound(this.state.roundNumber, this.state.playerScore)}

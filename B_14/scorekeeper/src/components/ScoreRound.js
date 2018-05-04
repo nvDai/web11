@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class RoundScore extends Component {
+class ScoreRound extends Component {
     rowIndex = this.props.round - 1;
     render() {
         const scoreInput = this.props.playerScore.map((score, index) => ( // phải đúng thứ tự (score, index)
@@ -23,4 +23,4 @@ class RoundScore extends Component {
     }
 }
 
-export default RoundScore;
+export default ScoreRound;

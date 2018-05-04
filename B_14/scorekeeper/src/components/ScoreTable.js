@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RoundScore from './RoundScore';
+import ScoreRound from './ScoreRound';
 
 class ScoreTable extends Component {
     state = {
@@ -51,7 +51,7 @@ class ScoreTable extends Component {
         let rounds = [];
         for (let i = 0; i < roundNumber; i++) {
             rounds.push(
-                <RoundScore
+                <ScoreRound
                     round={i + 1}
                     playerScore={[scores[i][0], scores[i][1], scores[i][2], scores[i][3]]}
                     onChangeScore={this._onChangeScore}

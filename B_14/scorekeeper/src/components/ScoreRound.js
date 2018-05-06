@@ -11,6 +11,9 @@ class ScoreRound extends Component {
                     value={score}
                     className="score-box"
                     onChange={(event) => this.props.onChangeScore(this.rowIndex, index, event.target.value)}
+                    // onChange={(event) => {
+                    //     setTimeout(this.props.onChangeScore(this.rowIndex, index, event.target.value), 10000) 
+                    // }}
                 />
             </td>
         ))

@@ -8,7 +8,7 @@ class ScoreTable extends Component {
         sumOfScore: 0,
         roundNumber: 1
     }
-
+    
     _onAddRound = ()=>{
         let rounds = this.state.playerScore;
         let number = this.state.roundNumber;
@@ -18,14 +18,24 @@ class ScoreTable extends Component {
         this.setState({roundNumber: number})
     };
 
-    _onChangeScore = (rowIndex, colIndex, score) => {
+    _onChangeScore = (rowIndex, colIndex, scoreInput) => {
         let scores = this.state.playerScore;
         let sumOfScore = 0;
         let sumOfPlayerScore = [0, 0, 0, 0];
         let NUMBER_LOOP = this.state.roundNumber;
 
-        if (!isNaN(score)) {
-            scores[rowIndex][colIndex] = score;
+        // while (true) {
+        //     if (scoreInput === '-') {
+        //         let score = '' + '-';
+        //     } else {
+        //         score += '-';
+        //         break;
+        //     }
+        // }
+        
+
+        if (!isNaN(scoreInput)) {
+            scores[rowIndex][colIndex] = scoreInput;
         } else {
             scores[rowIndex][colIndex] = 0;
         }

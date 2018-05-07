@@ -1,12 +1,12 @@
 const gameModel = require('./model');
 
-const creatPlayer = ({playerName1, playerName2, playerName3, playerName4, scores}) => new Promise((resolve, reject) => {
+const creatPlayer = ({player1Name, player2Name, player3Name, player4Name, scores}) => new Promise((resolve, reject) => {
     gameModel.create({
-        playerName1,
-        playerName2,
-        playerName3, 
-        playerName4, 
-        scores: [[]]
+        player1Name,
+        player2Name,
+        player3Name, 
+        player4Name, 
+        scores: [[0,0,0,0]]
     })
     .then(data => resolve(data))
     .catch(err => reject(err))
@@ -17,19 +17,20 @@ const addRoundScore = (id) => new Promise((resolve, reject) => {
     .update({
         _id: id
     }, {
-          $push: { scores: [[1, 1, 1, 1]]}
+          $push: { scores: [[0, 0, 0, 0]]}
         }
     )
     .then(data => resolve(data))
     .catch(err => reject(err))
 });
 
-const updateScore = ({id , rowIndex, colIndex, score}) => new Promise((resolve, reject) => {
+const updateScore = ({id , rowIndex, scoreArr}) => new Promise((resolve, reject) => {
+    
     gameModel
     .update({
           _id: id
         }, {
-            $set: { [`scores.${rowIndex}.${colIndex}`]: score }
+            $set: { [`scores.${rowIndex}`]: scoreArr }
         }
     )
     .then(data => resolve(data))

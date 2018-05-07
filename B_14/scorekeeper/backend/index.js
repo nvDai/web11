@@ -43,7 +43,7 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ extended: false }));
 
-app.use("/api/game", gameRouter);
+app.use("/api/games", gameRouter);
 
 
 // app.use(express.static('./public'));

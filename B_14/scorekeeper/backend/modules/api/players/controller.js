@@ -1,11 +1,12 @@
 const gameModel = require('./model');
 
-const creatPlayer = ({player1Name, player2Name, player3Name, player4Name, scores}) => new Promise((resolve, reject) => {
+const getGames = id =>{
+    return gameModel.find();
+}
+
+const creatGame = ({playerNames, scores}) => new Promise((resolve, reject) => {
     gameModel.create({
-        player1Name,
-        player2Name,
-        player3Name, 
-        player4Name, 
+        playerNames, 
         scores: [[0,0,0,0]]
     })
     .then(data => resolve(data))
@@ -39,7 +40,7 @@ const updateScore = ({id , rowIndex, scoreArr}) => new Promise((resolve, reject)
 
 
 
-const getPlayers = (id) => new Promise((resolve, reject) => {
+const getOneGame = (id) => new Promise((resolve, reject) => {
     gameModel
     .findOne({
         _id: id
@@ -49,8 +50,9 @@ const getPlayers = (id) => new Promise((resolve, reject) => {
 })
 
 module.exports = {
-    creatPlayer,
-    getPlayers,
+    creatGame,
+    getGames,
+    getOneGame,
     addRoundScore,
     updateScore
 }

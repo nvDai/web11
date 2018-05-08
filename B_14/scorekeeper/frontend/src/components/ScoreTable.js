@@ -1,60 +1,79 @@
 import React, { Component } from 'react';
 import ScoreRound from './ScoreRound';
+import axios from '../axios';
 
 class ScoreTable extends Component {
     state = {
-        playerScore: [[]],
+        playerScore: [[0, 0, 0, 0]],
         sumOfPlayerScore: [0, 0, 0, 0],
-        sumOfScore: 0,
-        roundNumber: 1
+        playerNames: ["", "", "", ""],
+        sumOfScore: 0
     }
-    
-    _onAddRound = ()=>{
-        let rounds = this.state.playerScore;
-        let number = this.state.roundNumber;
-        number += 1;
-        rounds.push([]);
-        this.setState({playerScore: rounds})
-        this.setState({roundNumber: number})
+
+    componentDidMount() {
+        axios
+            .get(`/api/games/${this.props.gameId}`)
+            .then(data => {
+                console.log(data.data);
+                this.setState({ playerNames: data.data.playerNames });
+                this.setState({ playerScore: data.data.scores })
+                console.log(this.state.playerScore);
+            })
+            .catch(err => console.log(err))
+    }
+
+    _onAddRound = () => {
+        axios
+            .post(`/api/games/${this.props.gameId}/addroundscore`)
+            .then(this.setState({ playerScore: [...this.state.playerScore, [0, 0, 0, 0]] }))
+            .catch(err => console.log(err))
     };
 
+    _checkInput = (value) => {
+        let score = "" + value;
+        let regex_Negative_Score = /(-[0-9]{1,})/;
+        let regex_Positive_Score = /([0-9]{1,})/;
+
+        if (score.match(regex_Negative_Score) || score.match(regex_Positive_Score)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     _onChangeScore = (rowIndex, colIndex, scoreInput) => {
         let scores = this.state.playerScore;
         let sumOfScore = 0;
         let sumOfPlayerScore = [0, 0, 0, 0];
-        let NUMBER_LOOP = this.state.roundNumber;
+        let NUMBER_LOOP = this.state.playerScore.length;
 
-        // while (true) {
-        //     if (scoreInput === '-') {
-        //         let score = '' + '-';
-        //     } else {
-        //         score += '-';
-        //         break;
-        //     }
-        // }
-        
-
-        if (!isNaN(scoreInput)) {
-            scores[rowIndex][colIndex] = scoreInput;
+        if (!this._checkInput(scoreInput)) {
+            return;
         } else {
-            scores[rowIndex][colIndex] = 0;
-        }
-        
-        for (let i = 0; i < 4; i++) {
-            for (let j = 0; j < NUMBER_LOOP; j++) {
-                if (isNaN(parseInt(scores[j][i], 10))) {
-                    sumOfPlayerScore[i] += 0;
-                } else {
-                    sumOfPlayerScore[i] += parseInt(scores[j][i], 10);
+            scores[rowIndex][colIndex] = scoreInput;
+            for (let i = 0; i < 4; i++) {
+                for (let j = 0; j < NUMBER_LOOP; j++) {
+                    if (isNaN(parseInt(scores[j][i], 10))) {
+                        sumOfPlayerScore[i] += 0;
+                    } else {
+                        sumOfPlayerScore[i] += parseInt(scores[j][i], 10);
+                    }
+
                 }
-                
+                sumOfScore += sumOfPlayerScore[i];
             }
-            sumOfScore += sumOfPlayerScore[i];
+            this.setState({ sumOfPlayerScore: sumOfPlayerScore, sumOfScore: sumOfScore })
+
+            axios
+                .put(`/api/games/${this.props.gameId}/updatescore`, {
+                    id: this.props.gameId,
+                    rowIndex: rowIndex,
+                    scoreArr: scores[rowIndex]
+                })
+                .then(
+                    this.setState({ sumOfPlayerScore: sumOfPlayerScore, sumOfScore: sumOfScore, playerScore: scores })
+                )
+                .catch(err => console.log(err))
         }
-        
-        this.setState({ sumOfPlayerScore: sumOfPlayerScore });
-        this.setState({ sumOfScore: sumOfScore });
-        this.setState({ playerScore: scores });
     }
 
     _addingRound = (roundNumber, scores) => {
@@ -69,10 +88,10 @@ class ScoreTable extends Component {
             )
         }
         return rounds;
-    }   
+    }
 
     render() {
-        const playerName = this.props.playerNames.map((name, index) => (
+        const playerName = this.state.playerNames.map((name, index) => (
             <td className="player-name">{name}</td>
         ));
 
@@ -91,10 +110,10 @@ class ScoreTable extends Component {
                         <th>Sum of Score(<span>{this.state.sumOfScore}</span>)</th>
                         {totalPlayerScore}
                     </tr>
-                    {this._addingRound(this.state.roundNumber, this.state.playerScore)}
+                    {this._addingRound(this.state.playerScore.length, this.state.playerScore)}
 
                 </table>
-                <button className="button_glow btn-add-round" onClick={this._onAddRound} >ADD ROUND</button>
+                <button className="button_glow btn-add-round" onClick={this._onAddRound}>ADD ROUND</button>
             </div>
         );
     }

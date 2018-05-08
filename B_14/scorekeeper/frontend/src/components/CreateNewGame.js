@@ -7,11 +7,15 @@ class CreateNewGame extends Component {
 
     handleChange = (index, value) => {
         const newPlayers = this.state.players.map((name, pIndex) => pIndex === index ? value : name);
+        this.props.onHandleTextChange(newPlayers);
         this.setState({ players: newPlayers });
     }
 
-    _onClick = () => this.props.startGame(this.state.players);
-
+    _onStartGame = (e) => {
+        e.preventDefault();
+        this.props.startGame(this.state.players)
+    };
+    
     render() {
         const nameInputs = this.state.players.map((name, index) => (
             <div className="form-group">
@@ -26,9 +30,9 @@ class CreateNewGame extends Component {
         ))
 
         return (
-            <form method="POST" action="/">
+            <form>
                 {nameInputs}
-                <button className="button_glow" onClick={this._onClick} >Create a new game</button>
+                <button className="button_glow" onClick={this._onStartGame}  type="submit" >Create a new game</button>
             </form>
 
         );

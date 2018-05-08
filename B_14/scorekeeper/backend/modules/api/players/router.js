@@ -1,11 +1,11 @@
 const express = require('express');
 const Router = express.Router();
 
-const playerController = require('./controller');
+const gameController = require('./controller');
 
 Router.post('/', (req, res) => {
-    playerController
-        .creatPlayer(req.body)
+    gameController
+        .creatGame(req.body)
         .then(players => res.send(players))
         .catch(err => {
             console.log(err);
@@ -13,11 +13,20 @@ Router.post('/', (req, res) => {
         })
 })
 //res.send(players)
+Router.get("/", (req, res) => {
+    gameController
+        .getGames()
+        .then(data => res.send(data))
+        .catch(err => {
+            console.error(err);
+            res.status(500).send(err);
+        });
+})
 Router.get('/:id', (req, res) => {
     let id = req.params.id;
-    idGame = id;
-    playerController
-        .getPlayers(id)
+    
+    gameController
+        .getOneGame(id)
         .then(players => res.send(players))
         .catch(err => {
             console.log(err);
@@ -26,7 +35,7 @@ Router.get('/:id', (req, res) => {
 
 })
 Router.post('/:id/addroundscore', (req, res) => {
-    playerController
+    gameController
         .addRoundScore(req.params.id)
         .then(data => res.send(data))
         .catch(err => {
@@ -37,7 +46,7 @@ Router.post('/:id/addroundscore', (req, res) => {
 
 Router.put('/:id/updatescore', (req, res) => {
     req.body.id = req.params.id;
-    playerController
+    gameController
         .updateScore(req.body)
         .then(data => res.send(data))
         .catch(err => {

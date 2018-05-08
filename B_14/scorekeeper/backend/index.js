@@ -13,6 +13,7 @@ app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Methods",
     "POST, GET, PUT, DELETE, OPTIONS"
+
   );
 
   if (req.headers.origin) {

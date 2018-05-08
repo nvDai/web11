@@ -20,7 +20,7 @@ class CreateNewGameScreen extends Component {
         console.log(data.data._id);
         console.log(this.state.playerNames);
 
-        this.props.history.push(`/${data.data._id}`);
+        this.props.history.push(`/${data.data._id}`);//Chuyển trang
         this.setState({ playerNames: playerNames, idGame: data.data._id });
       })
       .catch(err => console.log(err))

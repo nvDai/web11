@@ -71,7 +71,7 @@ class ScoreTable extends Component {
 
         for (let i = 0; i < 4; i++) {
             for (let j = 0; j < NUMBER_LOOP; j++) {
-                if (isNaN(parseInt(scores[j][i], 10)) || scores[j][i] == null) {
+                if (isNaN(parseInt(scores[j][i], 10))) {
                     sumOfPlayerScore[i] += 0;
                 } else {
                     sumOfPlayerScore[i] += parseInt(scores[j][i], 10);
@@ -81,6 +81,8 @@ class ScoreTable extends Component {
             sumOfScore += sumOfPlayerScore[i];
         }
 
+        this.setState({ sumOfPlayerScore: sumOfPlayerScore, sumOfScore: sumOfScore })
+
         axios
             .put(`/api/games/${this.props.gameId}/updatescore`, {
                 id: this.props.gameId,
@@ -88,7 +90,7 @@ class ScoreTable extends Component {
                 scoreArr: scores[rowIndex]
             })
             .then(() => {
-                this.setState({ sumOfPlayerScore: sumOfPlayerScore, sumOfScore: sumOfScore, playerScore: scores })
+                this.setState({ playerScore: scores })
             })
             .catch(err => console.log(err))
     }

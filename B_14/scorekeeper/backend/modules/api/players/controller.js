@@ -26,6 +26,7 @@ const addRoundScore = (id) => new Promise((resolve, reject) => {
 });
 
 const updateScore = ({id , rowIndex, scoreArr}) => new Promise((resolve, reject) => {
+    //fix lỗi nhập số âm ở input
     for (let i = 0; i < 4; i++) {
         if(scoreArr[i] == '-') {
             scoreArr[i] = 0;

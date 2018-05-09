@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 
 class ScoreRound extends Component {
-    rowIndex = this.props.round - 1;
     render() {
         const scoreInput = this.props.playerScore.map((score, index) => ( // phải đúng thứ tự (score, index)
             <td>
@@ -10,7 +9,7 @@ class ScoreRound extends Component {
                     type="text" placeholder="0"
                     value={score}
                     className="score-box"
-                    onChange={(event) => this.props.onChangeScore(this.rowIndex, index, event.target.value)}
+                    onChange={(event) => this.props.onChangeScore(this.props.round - 1, index, event.target.value)}
                 />
             </td>
         ))

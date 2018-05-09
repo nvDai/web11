@@ -16,19 +16,23 @@ class ScoreTable extends Component {
             .then(data => {
                 let sumOfPlayerScore = [0, 0, 0, 0];
                 let sumOfScore = 0;
-                
+                console.log(data.data.scores)
                 for (let i = 0; i < 4; i++) {
                     for (let j = 0; j < data.data.scores.length; j++) {
-                        sumOfPlayerScore[i] += parseInt(data.data.scores[j][i], 10);
+                        if (data.data.scores[j][i] == null) {
+                            sumOfPlayerScore[i] += 0;
+                        } else {
+                            sumOfPlayerScore[i] += parseInt(data.data.scores[j][i], 10);
+                        }
                     }
                     sumOfScore += sumOfPlayerScore[i];
                 }
-                
-                this.setState({ 
+
+                this.setState({
                     playerNames: data.data.playerNames,
                     playerScore: data.data.scores,
-                    sumOfPlayerScore: sumOfPlayerScore, 
-                    sumOfScore: sumOfScore 
+                    sumOfPlayerScore: sumOfPlayerScore,
+                    sumOfScore: sumOfScore
                 });
 
             })
@@ -45,8 +49,8 @@ class ScoreTable extends Component {
     _checkInput = (value) => {
         let score = value;
         let regex_Score = /(-?[0-9]+)/; //regex bắt buộc phải có 1 số, nếu chuỗi rỗng hoặc dấu - đều ko được
-        
-        if (score.match(regex_Score) || score == "" || score == "-") {
+
+        if (score.match(regex_Score) || score === "" || score === "-") {
             return true;
         } else {
             return false;
@@ -58,7 +62,7 @@ class ScoreTable extends Component {
         let sumOfPlayerScore = [0, 0, 0, 0];
         let NUMBER_LOOP = this.state.playerScore.length;
 
-        if (!this._checkInput(scoreInput) || scoreInput == NaN) {
+        if (!this._checkInput(scoreInput)) {
             scores[rowIndex][colIndex] = 0;
             console.log(scores[rowIndex][colIndex])
         } else {
@@ -67,7 +71,7 @@ class ScoreTable extends Component {
 
         for (let i = 0; i < 4; i++) {
             for (let j = 0; j < NUMBER_LOOP; j++) {
-                if (isNaN(parseInt(scores[j][i], 10))) {
+                if (isNaN(parseInt(scores[j][i], 10)) || scores[j][i] == null) {
                     sumOfPlayerScore[i] += 0;
                 } else {
                     sumOfPlayerScore[i] += parseInt(scores[j][i], 10);
@@ -76,7 +80,6 @@ class ScoreTable extends Component {
             }
             sumOfScore += sumOfPlayerScore[i];
         }
-        
 
         axios
             .put(`/api/games/${this.props.gameId}/updatescore`, {
@@ -85,14 +88,9 @@ class ScoreTable extends Component {
                 scoreArr: scores[rowIndex]
             })
             .then(() => {
-                this.setState({ playerScore: scores })
-                this.setState({ sumOfPlayerScore: sumOfPlayerScore, sumOfScore: sumOfScore })
+                this.setState({ sumOfPlayerScore: sumOfPlayerScore, sumOfScore: sumOfScore, playerScore: scores })
             })
             .catch(err => console.log(err))
-
-        this.setState({ sumOfPlayerScore: sumOfPlayerScore, sumOfScore: sumOfScore })
-            
-        
     }
 
     _addingRound = (roundNumber, scores) => {

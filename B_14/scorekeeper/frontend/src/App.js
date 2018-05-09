@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App container">
-          <Route exact path="/" component={CreateNewGameScreen} />          
+          <Route exact path="/" component={CreateNewGameScreen} />
           <Route exact path="/:gameId" component={ScoreTableScreen} />
         </div>
       </BrowserRouter>

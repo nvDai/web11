@@ -15,7 +15,7 @@ class CreateNewGame extends Component {
         e.preventDefault();
         this.props.startGame(this.state.players)
     };
-    
+
     render() {
         const nameInputs = this.state.players.map((name, index) => (
             <div className="form-group">
@@ -32,7 +32,7 @@ class CreateNewGame extends Component {
         return (
             <form>
                 {nameInputs}
-                <button className="button_glow" onClick={this._onStartGame}  type="submit" >Create a new game</button>
+                <button className="button_glow" onClick={this._onStartGame} type="submit" >Create a new game</button>
             </form>
 
         );

@@ -36,7 +36,7 @@ class CreateNewGameScreen extends Component {
         <NavBar />
         <CreateNewGame startGame={this._onCreateNewGame} onHandleTextChange={this._onHandleTextChange} />
       </div>
-      
+
     );
   }
 

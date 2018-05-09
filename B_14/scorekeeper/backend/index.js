@@ -47,11 +47,11 @@ app.use(bodyParser.json({ extended: false }));
 app.use("/api/games", gameRouter);
 
 
-// app.use(express.static('./public'));
+app.use(express.static('./public'));
 
-// app.get('/', (req,res) => {
-//   res.sendFile('./public/index.html');
-// });
+app.get('/', (req,res) => {
+  res.sendFile('./public/index.html');
+});
 
 mongoose.connect(config.mongoPath, err => {
   if (err) console.error(err);

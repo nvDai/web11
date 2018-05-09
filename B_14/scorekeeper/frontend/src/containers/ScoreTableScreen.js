@@ -5,7 +5,7 @@ import ScoreTable from "../components/ScoreTable";
 
 class ScoreTableScreen extends Component {
   render() {
-    return (  
+    return (
       <div>
         <NavBar />
         <ScoreTable gameId={this.props.match.params.gameId} />

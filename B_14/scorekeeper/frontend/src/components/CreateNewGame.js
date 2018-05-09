@@ -12,7 +12,7 @@ class CreateNewGame extends Component {
     }
 
     _onStartGame = (e) => {
-        e.preventDefault();
+        e.preventDefault(); //ngăn chặn mặc định, mặc định là form có method='post' nên ta chặn nó lại, dùng axios để post
         this.props.startGame(this.state.players)
     };
 

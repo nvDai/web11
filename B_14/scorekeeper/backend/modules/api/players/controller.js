@@ -26,7 +26,12 @@ const addRoundScore = (id) => new Promise((resolve, reject) => {
 });
 
 const updateScore = ({id , rowIndex, scoreArr}) => new Promise((resolve, reject) => {
-    
+    for (let i = 0; i < 4; i++) {
+        if(scoreArr[i] == '-') {
+            scoreArr[i] = 0;
+        }
+    }
+
     gameModel
     .update({
           _id: id

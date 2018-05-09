@@ -8,7 +8,8 @@ class ScoreTableScreen extends Component {
     return (
       <div>
         <NavBar />
-        <ScoreTable gameId={this.props.match.params.gameId} />
+        {/* this.props.match.params.gameId lấy :gameId của <Route exact path="/:gameId" component={ScoreTableScreen} /> */}
+        <ScoreTable gameId={this.props.match.params.gameId} /> 
       </div>
     );
   }

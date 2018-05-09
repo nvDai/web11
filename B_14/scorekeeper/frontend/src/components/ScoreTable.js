@@ -64,7 +64,8 @@ class ScoreTable extends Component {
 
         if (!this._checkInput(scoreInput)) {
             scores[rowIndex][colIndex] = 0;
-            console.log(scores[rowIndex][colIndex])
+            return ;
+            // console.log(scores[rowIndex][colIndex])
         } else {
             scores[rowIndex][colIndex] = scoreInput;
         }

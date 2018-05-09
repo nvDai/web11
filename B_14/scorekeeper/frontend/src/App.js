@@ -5,7 +5,7 @@ import "./App.css";
 import CreateNewGameScreen from "./containers/CreateNewGameScreen";
 import ScoreTableScreen from "./containers/ScoreTableScreen";
 
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom"; //để phân trang
 
 class App extends Component {
 
